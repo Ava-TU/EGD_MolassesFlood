@@ -49,6 +49,12 @@ public class GameManager : MonoBehaviour
 
         //Create the pieces of the correct size with the correct texture
         CreateJigsawPieces(jigsawTexture);
+
+        //Place the pieces randomly into the visible area
+        Scatter();
+
+        //Updates border to fit the puzzle
+        UpdateBorder();
     }
 
     Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty)
@@ -112,5 +118,56 @@ public class GameManager : MonoBehaviour
                 piece.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", jigsawTexture);
             }
         }
+    }
+
+    //Place pieces randomly around screen
+    private void Scatter()
+    {
+        //Calculate the visible ortograhpic size of the screen
+        float orthoHeight = Camera.main.orthographicSize;
+        float screenAspect = (float)Screen.width / Screen.height;
+        float orthoWidth = (screenAspect * orthoHeight);
+
+        //Ensure pieces are away from the edges so they don't clip off screen
+        float pieceWidth = width * gameHolder.localScale.x;
+        float pieceHeight = height * gameHolder.localScale.y;
+
+        orthoHeight -= pieceHeight;
+        orthoWidth -= pieceWidth;
+
+
+        //Place each piece randomly in the visible area
+        foreach (Transform piece in pieces)
+        {
+            float x = Random.Range(-orthoWidth, orthoWidth);
+            float y = Random.Range(-orthoHeight, orthoHeight);
+            piece.position = new Vector3(x, y, -1); //the -1 for z ensures its in the camera clipping area
+        }
+    }
+
+    //Updates border to fit puzzle
+    private void UpdateBorder()
+    {
+        LineRenderer lineRenderer = gameHolder.GetComponent<LineRenderer>();
+
+        //Calculate half sizes to simplify the code
+        float halfWidth = (width * dimensions.x) / 2f;
+        float halfHeight = (height * dimensions.y) / 2f;
+
+        //Want the border to be behind the pieces layer order
+        float borderZ = 0f;
+
+        //Set border vertices, starting top left, going clockwise
+        lineRenderer.SetPosition(0, new Vector3(-halfWidth, halfHeight, borderZ));
+        lineRenderer.SetPosition(1, new Vector3(halfWidth, halfHeight, borderZ));
+        lineRenderer.SetPosition(2, new Vector3(halfWidth, -halfHeight, borderZ));
+        lineRenderer.SetPosition(3, new Vector3(-halfWidth, -halfHeight, borderZ));
+
+        //Set the thickness of the border line
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+
+        //Show the border line
+        lineRenderer.enabled = true;
     }
 }
