@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private float height;
 
     private Transform draggingPiece = null;
+    private Vector3 offset;
 
     void Start()
     {
@@ -185,12 +187,16 @@ public class GameManager : MonoBehaviour
             {
                 //Everything is moveable, so we don't need to check it's a piece
                 draggingPiece = hit.transform;
+                offset = draggingPiece.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                offset += Vector3.back;
             }
         }
 
         //When we release the mouse button stop dragging
         if (draggingPiece && Input.GetMouseButtonUp(0))
         {
+            SnapAndDisableIfCorrect();
+            draggingPiece.position += Vector3.forward;
             draggingPiece = null;
         }
 
@@ -199,9 +205,22 @@ public class GameManager : MonoBehaviour
         if (draggingPiece)
         {
             Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            newPosition.z = draggingPiece.position.z;
-            
+            //newPosition.z = draggingPiece.position.z; this was the previous solution to fixing the z axis when dragging the pieces
+            newPosition += offset;
             draggingPiece.position = newPosition;
         }
+    }
+
+    private void SnapAndDisableIfCorrect()
+    {
+        //We need to know the index of the piece to determine it's correct position
+        int pieceIndex = pieces.IndexOf(draggingPiece);
+
+        //The coordinates of the piece in the puzzle
+        int col = pieceIndex % dimensions.x;
+        int row = pieceIndex / dimensions.x;
+
+        //The target position in the non-scaled coordinates
+        Vector2 targetPosition;
     }
 }
