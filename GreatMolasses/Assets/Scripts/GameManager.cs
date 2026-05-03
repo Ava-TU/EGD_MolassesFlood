@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     private Vector2Int dimensions;
     private float width;
     private float height;
+
+    private Transform draggingPiece = null;
 
     void Start()
     {
@@ -169,5 +172,36 @@ public class GameManager : MonoBehaviour
 
         //Show the border line
         lineRenderer.enabled = true;
+    }
+
+    //Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit)
+            {
+                //Everything is moveable, so we don't need to check it's a piece
+                draggingPiece = hit.transform;
+            }
+        }
+
+        //When we release the mouse button stop dragging
+        if (draggingPiece && Input.GetMouseButtonUp(0))
+        {
+            draggingPiece = null;
+        }
+
+
+        //Set the dragged piece position to the position of the mouse
+        if (draggingPiece)
+        {
+            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            newPosition.z = draggingPiece.position.z;
+            
+            draggingPiece.position = newPosition;
+        }
     }
 }
