@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2323698045564003467}
   - component: {fileID: 658793449359953550}
   - component: {fileID: 5825778455230245416}
+  - component: {fileID: 5694265325426246766}
   m_Layer: 0
   m_Name: MolassesDroplet
   m_TagString: Untagged
@@ -166,3 +167,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5694265325426246766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3962779224710248404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ffd68e7355cafa42a469a161f2657e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MolassesScript
