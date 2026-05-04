@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     private Vector2 movement;
 
+    public Vector2 newPlayerLocation;
+
     // Update is called once per frame
     void Update()
     {
@@ -15,5 +17,10 @@ public class PlayerMovement : MonoBehaviour
         float input = Input.GetAxisRaw("Horizontal");
         movement.x = input * speed * Time.deltaTime;
         transform.Translate(movement);
+    }
+
+    public void TeleportPlayer()
+    {
+        transform.position = newPlayerLocation;
     }
 }
