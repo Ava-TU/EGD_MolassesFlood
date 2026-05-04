@@ -511,7 +511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &170288604
 Transform:
   m_ObjectHideFlags: 0
@@ -541,6 +541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 184872578}
+  - component: {fileID: 184872579}
   m_Layer: 0
   m_Name: MolassesSpawner
   m_TagString: Untagged
@@ -563,6 +564,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2067119514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184872579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184872577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f6b607079749d44dad96ecb7710328d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MolassesSpawnScript
+  spawnSpeed: 2.5
+  molassesPrefab: {fileID: 3962779224710248404, guid: 958d4036b26959449b610276166334aa, type: 3}
+  minTrans: -8
+  maxTrans: 8
 --- !u!1 &195865092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,7 +2197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5303919849738125433, guid: 4d8ad400922c4a343911784077c26568, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5303919849738125434, guid: 4d8ad400922c4a343911784077c26568, type: 3}
       propertyPath: m_FlipX
@@ -4011,7 +4028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2067119514
 Transform:
   m_ObjectHideFlags: 0
@@ -4184,7 +4201,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ab7aa97c98c68405e918264e216b9dff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

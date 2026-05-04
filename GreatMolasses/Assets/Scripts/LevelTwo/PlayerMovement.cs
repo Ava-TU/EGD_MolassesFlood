@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         //GetAxisRaw() takes exactly -1 or +1
         //GetAxis() would take values in between -1 to +1 (useful for acceleration)
         //Getting the axis is mapped to A/D, left/right arrow and joystick left/right
-        float input = Input.GetAxisRaw("Horizontal");
+        float input = Input.GetAxis("Horizontal");
         movement.x = input * speed * Time.deltaTime;
         transform.Translate(movement);
     }
