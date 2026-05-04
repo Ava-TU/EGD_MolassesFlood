@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Texture2D> imageTextures;
     [SerializeField] private Transform startGamePanel;
     [SerializeField] private Image startGamePrefab;
+    [SerializeField] private GameObject nextLevelButton;
 
     private List<Transform> pieces;
     private Vector2Int dimensions;
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     private Transform draggingPiece = null;
     private Vector3 offset;
+
+    private int piecesCorrect;
+    public int sceneIndex;
 
     void Start()
     {
@@ -60,6 +64,9 @@ public class GameManager : MonoBehaviour
 
         //Updates border to fit the puzzle
         UpdateBorder();
+
+        //As we're starting the puzzle there will be no correct pieces
+        piecesCorrect = 0;
     }
 
     Vector2Int GetDimensions(Texture2D jigsawTexture, int difficulty)
@@ -221,6 +228,29 @@ public class GameManager : MonoBehaviour
         int row = pieceIndex / dimensions.x;
 
         //The target position in the non-scaled coordinates
-        Vector2 targetPosition;
+        Vector2 targetPosition = new((-width * dimensions.x / 2) + (width * col) + (width /2),
+                                     (-height * dimensions.y / 2) + (height * row) + (height / 2));
+
+        //Check if we're in the correct location
+        if (Vector2.Distance(draggingPiece.localPosition, targetPosition) < (width / 2))
+        {
+            //Snap to our destination
+            draggingPiece.localPosition = targetPosition;
+
+            //Disable the collider so we can't click on the object anymore
+            draggingPiece.GetComponent<BoxCollider2D>().enabled = false;
+
+            //Increase the number of correct pieces, and check for puzzle completion
+            piecesCorrect++;
+            if (piecesCorrect == pieces.Count)
+            {
+                nextLevelButton.SetActive(true);
+            }
+        }
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 }
