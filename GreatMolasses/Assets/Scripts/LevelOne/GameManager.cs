@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("Game Elements")]
     [SerializeField] private int difficulty = 4;
     [SerializeField] private Transform gameHolder;
@@ -30,25 +29,10 @@ public class GameManager : MonoBehaviour
     private int piecesCorrect;
     public int sceneIndex;
 
-    void Start()
-    {
-        //Create the UI
-        //foreach (Texture2D texture in imageTextures)
-        //{
-            //Image image = Instantiate(startGamePrefab, startGamePanel);
-            //image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
-
-            //Assign button action
-            //image.GetComponent<Button>().onClick.AddListener(delegate { StartGame(texture); } );
-        //}
-
-    }
-
     public void StartGame(Texture2D jigsawTexture)
     {
         //hide the UI
         //startGamePanel.gameObject.SetActive(false);
-
 
         //stores a list of the transform for each jigsaw piece so we can track them later
         pieces = new List<Transform>();

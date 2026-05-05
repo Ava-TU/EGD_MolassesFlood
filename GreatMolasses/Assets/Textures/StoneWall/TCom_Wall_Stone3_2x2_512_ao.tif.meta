@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1a357a0e5c2f2de47b96bafebe002a2d
+guid: bda9effaf3a4c9d469b387224eae4f57
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6163188595898684882
-    second: MolassesTankIMG_0
+      213: 29665335160646367
+    second: TCom_Wall_Stone3_2x2_512_ao_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MolassesTankIMG_0
+      name: TCom_Wall_Stone3_2x2_512_ao_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1047
-        height: 507
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d5974ebf5b088550800000000000000
-      internalID: 6163188595898684882
+      spriteID: fdaa4641774696000800000000000000
+      internalID: 29665335160646367
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MolassesTankIMG_0: 6163188595898684882
+      TCom_Wall_Stone3_2x2_512_ao_0: 29665335160646367
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
