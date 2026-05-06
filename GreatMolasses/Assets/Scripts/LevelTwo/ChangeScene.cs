@@ -7,6 +7,6 @@ public class ChangeScene : MonoBehaviour
 
     void OnEnable()
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 }
