@@ -11,7 +11,7 @@ public class MolassesScript : MonoBehaviour
     void Start()
     {
         molassesCount = 0;
-        molassesText.text = "Molasses Collected: " + molassesCount.ToString();
+        //molassesText.text = "Molasses Collected: " + molassesCount.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
