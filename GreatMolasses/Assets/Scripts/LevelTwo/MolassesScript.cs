@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MolassesScript : MonoBehaviour
 {
+    public int molassesCount;
+    public TMP_Text molassesText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        molassesCount = 0;
+        molassesText.text = "Molasses Collected: " + molassesCount.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Cup"))
+        if (col.CompareTag("Molasses"))
         {
-            Destroy(gameObject);
+            Destroy(col.gameObject);
+            molassesCount++;
+            molassesText.text = "Molasses Collected: " + molassesCount.ToString();
         }
     }
 }

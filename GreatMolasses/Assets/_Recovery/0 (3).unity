@@ -2520,10 +2520,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5303919849738125433, guid: 4d8ad400922c4a343911784077c26568, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1113438747}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8ad400922c4a343911784077c26568, type: 3}
 --- !u!4 &1113438743 stripped
 Transform:
@@ -2535,20 +2532,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5303919849738125433, guid: 4d8ad400922c4a343911784077c26568, type: 3}
   m_PrefabInstance: {fileID: 1113438742}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1113438747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113438744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ffd68e7355cafa42a469a161f2657e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MolassesScript
-  molassesCount: 0
-  molassesText: {fileID: 1879865476}
 --- !u!1 &1135653849
 GameObject:
   m_ObjectHideFlags: 0
